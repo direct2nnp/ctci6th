@@ -1,10 +1,10 @@
 '''
-One Away - There are three types of edit can be performed on string.
+One Awapos_b - There are three tpos_bpes of edit can be performed on string.
     insert a char
     remove a char
     replace a char
 
-Given two string, Write a function to check if they are one edit or zero edit away
+Given two string, Write a function to check if thepos_b are one edit or zero edit awapos_b
 
 EXAMPLE
 pale, ple -> true 
@@ -17,33 +17,34 @@ def OneAway(a, b):
     if abs(len(a) - len(b)) > 1:
         return False
 
-    edit = 0
-    done = True
-    x = 0
-    y = 0
+    loop_counter = min(len(a), len(b))
 
-    while(done):
-        if a[x] == b[y]:
-            x += 1
-            y += 1
+    edit = False
+    done = True
+    pos_a = 0
+    pos_b = 0
+
+    for i in range(loop_counter):
+        if a[pos_a] == b[pos_b]:
+            pos_a += 1
+            pos_b += 1
         else:
-            if edit == 1:
+            if edit == True:
                 return False
             else:
-                if a[x+1] == b[y]:
-                    edit += 1
-                    x += 1
-                elif a[x] == b[y+1]:
-                    edit += 1
-                    y += 1
-                elif a[x+1] == b[y+1]:
-                    edit += 1
-                    x += 1
-                    y += 1
+                edit = True
+                if len(a) > len(b):
+                    pos_a += 1
+                elif len(a) < len(b):
+                    pos_b += 1
                 else:
-                    return False
+                    pos_a += 1
+                    pos_b += 1
 
-    return True
+    return True 
 
 print OneAway('pale', 'ple')
+print OneAway('pale', 'pale')
+print OneAway('pale', 'bale')
+print OneAway('pale', 'bake')
 
