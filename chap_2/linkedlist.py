@@ -31,9 +31,11 @@ class MyLinkedList(object):
 
     def print_list(self):
         current = self.head
+        s = '['
         while current:
-            print current.get_data()
+            s += str(current.get_data()) + ', '
             current = current.get_next()
+        print s[:-2] + ']'
 
     def search(self, data):
         current = self.head
